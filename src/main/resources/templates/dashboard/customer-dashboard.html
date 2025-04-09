@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">PolicyHub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/new-policies}">New Policies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/track-policies}">Track Your Policies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/approved-policies}">Approved Policies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/contact}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/profile}">Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Welcome to PolicyHub</h1>
+        <div class="row">
+            <!-- New Policies Section -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Explore New Policies</h5>
+                        <p class="card-text">Browse and purchase new policies that suit your needs.</p>
+                        <a th:href="@{/new-policies}" class="btn btn-primary">View Policies</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Track Policies Section -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Track Your Policies</h5>
+                        <p class="card-text">Keep track of the policies you have purchased.</p>
+                        <a th:href="@{/track-policies}" class="btn btn-primary">Track Policies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Approved Policies Section -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Approved Policies</h5>
+                        <p class="card-text">View the policies that have been approved by the agent.</p>
+                        <a th:href="@{/approved-policies}" class="btn btn-primary">View Approved Policies</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Contact Section -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Need Help?</h5>
+                        <p class="card-text">Contact us for any assistance or queries.</p>
+                        <a th:href="@{/contact}" class="btn btn-primary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
