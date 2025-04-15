@@ -41,10 +41,10 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form th:action="@{/login}" method="post">
+        <form th:action="@{/auth/login}" method="post">
             <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
@@ -55,16 +55,16 @@
                 <label for="role" class="form-label">Select Role</label>
                 <select class="form-select" id="role" name="role" required>
                     <option value="" disabled selected>Select your role</option>
-                    <option value="user">User</option>
-                    <option value="admin">Admin</option>
+                    <option value="customer">Customer</option>
                     <option value="agent">Agent</option>
+                    <option value="admin">Admin</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
         <div class="text-center mt-3">
             <p>Don't have an account? 
-                <a th:href="@{/register}" style="cursor: pointer; text-decoration: none; color: #0d6efd; font-weight: bold;">Sign up</a>
+                <a th:href="@{/auth/register}" style="cursor: pointer; text-decoration: none; color: #0d6efd; font-weight: bold;">Sign up</a>
             </p>
         </div>
     </div>

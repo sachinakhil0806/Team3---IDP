@@ -28,10 +28,10 @@
 <body>
     <div class="register-container">
         <h2 class="form-title">Register</h2>
-        <form th:action="@{/register}" method="post">
+        <form th:action="@{/auth/register}" method="post">
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                <input type="text" class="form-control" id="username" name="name" placeholder="Enter your username" required>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
@@ -45,9 +45,9 @@
                 <label for="role" class="form-label">Role</label>
                 <select class="form-select" id="role" name="role" required>
                     <option value="" disabled selected>Select your role</option>
-                    <option value="ADMIN">Admin</option>
-                    <option value="USER">User</option>
-                    <option value="AGENT">Agent</option>
+                    <option value="customer">Customer</option>
+                    <option value="agent">Agent</option>
+                    <option value="admin">Admin</option>
                 </select>
             </div>
             <div class="d-grid">

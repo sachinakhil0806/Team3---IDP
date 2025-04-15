@@ -22,5 +22,10 @@ public class CustomerController {
         return "auth/register"; // Returns the register page view
     }
 
+    @RequestMapping("/dashboard")
+    public String showCustomerDashboard() {
+        return "dashboard/customer-dashboard"; // Customer-specific view
+    }
+
   
 }

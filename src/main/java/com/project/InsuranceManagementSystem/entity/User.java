@@ -1,7 +1,18 @@
 package com.project.InsuranceManagementSystem.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "users") // Optional: specify the table name if different from the class name
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
     private String name;
     private String email;
     private String password;
@@ -49,7 +60,7 @@ public class User {
     }
 
     public void setRole(String role) {
-        if (!role.equalsIgnoreCase("customer") && !role.equalsIgnoreCase("agent")) {
+        if (!role.equalsIgnoreCase("customer") && !role.equalsIgnoreCase("agent") && !role.equalsIgnoreCase("admin")) {
              throw new IllegalArgumentException("Invalid role. Allowed values: customer, agent.");
         }
         this.role = role.toLowerCase();
@@ -63,6 +74,17 @@ public class User {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
 
     // public String getAddress() {
     //     return address;
