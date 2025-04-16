@@ -1,50 +1,79 @@
 package com.project.InsuranceManagementSystem.entity;
 
-public class Customer {
-	 	private int customerId;
-	    private String customerName;
-	    private String email;
-	    private String phone;
-	    private String address;
-		private User user;
+import jakarta.persistence.*; // Import JPA annotations
+import java.io.Serializable;
 
-	    public int getCustomerId() {
-	        return customerId;
-	    }
+@Entity // Mark this class as a JPA entity
+@Table(name = "customers") // Optional: Specify the table name
+public class Customer implements Serializable {
 
-	    public void setCustomerId(int customerId) {
-	        this.customerId = customerId;
-	    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customer_id")
+    private int customerId;
 
-	    public String getCustomerName() {
-	        return customerName;
-	    }
+    @Column(name = "customer_name", nullable = false)
+    private String customerName;
 
-	    public void setCustomerName(String customerName) {
-	        this.customerName = customerName;
-	    }
+    @Column(name = "email", unique = true, nullable = false)
+    private String email;
 
-	    public String getEmail() {
-	        return email;
-	    }
+    @Column(name = "phone", nullable = false)
+    private String phone;
 
-	    public void setEmail(String email) {
-	        this.email = email;
-	    }
+    @Column(name = "address")
+    private String address;
 
-	    public String getPhone() {
-	        return phone;
-	    }
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id") // Foreign key to the User table
+    private User user;
 
-	    public void setPhone(String phone) {
-	        this.phone = phone;
-	    }
+    // Getters and Setters
+    public int getCustomerId() {
+        return customerId;
+    }
 
-	    public String getAddress() {
-	        return address;
-	    }
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
 
-	    public void setAddress(String address) {
-	        this.address = address;
-	    }
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

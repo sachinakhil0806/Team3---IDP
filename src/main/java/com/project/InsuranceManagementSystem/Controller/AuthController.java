@@ -21,27 +21,27 @@ public class AuthController {
 
     @PostMapping("/register")
     public String registerUser(@RequestParam String name, @RequestParam String email,
-                               @RequestParam String password, @RequestParam String role, Model model) {
+                            @RequestParam String password, @RequestParam String role, Model model) {
+        System.out.println("RegisterUser Method called");
 
-        System.out.println("RegeisterUser Method called");
+        // Check if the email already exists
         if (userRepository.findByEmail(email) != null) {
             model.addAttribute("error", "User already exists!");
             return "auth/register"; // Show the register page with an error message
         }
+
+        // Create and save the user
         User user = new User();
         user.setName(name);
         user.setEmail(email);
         user.setPassword(password); // In production, always hash passwords!
         user.setRole(role);
         userRepository.save(user);
+
         model.addAttribute("success", "User registered successfully!");
-        
-        System.out.println(user);
-        // System.out.println("User registered successfully: " + user.getName() + ", " + user.getEmail() + ", " + user.getRole());
-        
+        System.out.println("User registered: " + user);
+
         return "auth/login"; // Redirect to the login page after successful registration
-
-
     }
 
     @GetMapping("/login")

@@ -1,26 +1,32 @@
 package com.project.InsuranceManagementSystem.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users") // Optional: specify the table name if different from the class name
+@Table(name = "users") // Maps to the "users" table in the database
 public class User {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq_gen")
+    @SequenceGenerator(name = "users_seq_gen", sequenceName = "users_seq", allocationSize = 1)
+    private int id;
 
+    @Column(name = "name", nullable = false)
     private String name;
-    private String email;
-    private String password;
-    private String phone;
-    // private String address;
-    private String role;     // Values can be "customer", or "Agent"
 
-    // Getter and Setter for id
+    @Column(name = "email", unique = true, nullable = false)
+    private String email;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "role", nullable = false)
+    private String role;
+
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -29,7 +35,6 @@ public class User {
         this.id = id;
     }
 
-    // Getter and Setter for name
     public String getName() {
         return name;
     }
@@ -38,13 +43,20 @@ public class User {
         this.name = name;
     }
 
-    // Getter and Setter for email
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getPhone() {
@@ -60,18 +72,7 @@ public class User {
     }
 
     public void setRole(String role) {
-        if (!role.equalsIgnoreCase("customer") && !role.equalsIgnoreCase("agent") && !role.equalsIgnoreCase("admin")) {
-             throw new IllegalArgumentException("Invalid role. Allowed values: customer, agent.");
-        }
-        this.role = role.toLowerCase();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+        this.role = role;
     }
 
     @Override
@@ -85,12 +86,4 @@ public class User {
                 ", role='" + role + '\'' +
                 '}';
     }
-
-    // public String getAddress() {
-    //     return address;
-    // }
-
-    // public void setAddress(String email) {
-    //     this.address = address;
-    // }
 }
