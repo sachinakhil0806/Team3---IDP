@@ -1,5 +1,7 @@
 package com.project.InsuranceManagementSystem.Repository;
 
-public interface ClaimRepository {
+import com.project.InsuranceManagementSystem.entity.Claim;
+import org.springframework.data.jpa.repository.JpaRepository;
 
+public interface ClaimRepository extends JpaRepository<Claim, Long> {
 }

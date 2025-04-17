@@ -1,57 +1,79 @@
 package com.project.InsuranceManagementSystem.entity;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Claim {
-	  private int claimId;
-	    private String claimType;
-	    private double claimAmount;
-	    private String claimStatus;
-	    private String Status;
-	    private User user;
-	    private Policy policy;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long claimId;
 
+    private Long customerId;
+    private Long agentId;
+    private String claimType;
+    private Double claimAmount;
+    private String claimStatus;
 
-	    // Getter and Setter for claimId
-	    public int getClaimId() {
-	        return claimId;
-	    }
+    @ManyToOne
+    @JoinColumn(name = "policy_id", nullable = false)
+    private Policy policy;
 
-	    public void setClaimId(int claimId) {
-	        this.claimId = claimId;
-	    }
+	public Long getClaimId() {
+		return claimId;
+	}
 
-	    // Getter and Setter for claimType
-	    public String getClaimType() {
-	        return claimType;
-	    }
+	public void setClaimId(Long claimId) {
+		this.claimId = claimId;
+	}
 
-	    public void setClaimType(String claimType) {
-	        this.claimType = claimType;
-	    }
+	public Long getCustomerId() {
+		return customerId;
+	}
 
-	    // Getter and Setter for claimAmount
-	    public double getClaimAmount() {
-	        return claimAmount;
-	    }
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
+	}
 
-	    public void setClaimAmount(double claimAmount) {
-	        this.claimAmount = claimAmount;
-	    }
+	public Long getAgentId() {
+		return agentId;
+	}
 
-	    // Getter and Setter for claimStatus
-	    public String getClaimStatus() {
-	        return claimStatus;
-	    }
+	public void setAgentId(Long agentId) {
+		this.agentId = agentId;
+	}
 
-	    public void setClaimStatus(String claimStatus) {
-	        this.claimStatus = claimStatus;
-	    }
+	public String getClaimType() {
+		return claimType;
+	}
 
+	public void setClaimType(String claimType) {
+		this.claimType = claimType;
+	}
 
-	    public String getStatus() {
-	        return Status;
-	    }
+	public Double getClaimAmount() {
+		return claimAmount;
+	}
 
-	    public void setStatus(String status) {
-	        Status = status;
-	    }
+	public void setClaimAmount(Double claimAmount) {
+		this.claimAmount = claimAmount;
+	}
+
+	public String getClaimStatus() {
+		return claimStatus;
+	}
+
+	public void setClaimStatus(String claimStatus) {
+		this.claimStatus = claimStatus;
+	}
+
+	public Policy getPolicy() {
+		return policy;
+	}
+
+	public void setPolicy(Policy policy) {
+		this.policy = policy;
+	}
+
+    // Getters and Setters
+	
 }
