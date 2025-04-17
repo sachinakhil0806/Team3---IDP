@@ -1,4 +1,4 @@
-package com.project.InsuranceManagementSystem.repository;
+package com.project.InsuranceManagementSystem.Repository;
 
 import com.project.InsuranceManagementSystem.entity.Policy;
 import org.springframework.data.jpa.repository.JpaRepository;

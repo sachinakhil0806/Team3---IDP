@@ -2,10 +2,17 @@ package com.project.InsuranceManagementSystem.Controller;
 
 import com.project.InsuranceManagementSystem.entity.Policy;
 import com.project.InsuranceManagementSystem.Service.PolicyService;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Date;
+
+
+
+
 
 @RestController
 @RequestMapping("/admin/policies")
@@ -36,7 +43,15 @@ public class PolicyController {
 
     // Add a new policy
     @PostMapping("/add")
-    public ResponseEntity<Policy> createPolicy(@RequestBody Policy policy) {
+    public ResponseEntity<Policy> createPolicy(@RequestParam String policyName,
+            @RequestParam String policyDetails,
+            @RequestParam Double premiumAmount,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date validityPeriod) {
+        Policy policy = new Policy();
+        policy.setPolicyName(policyName);
+        policy.setCoverageDetails(policyDetails);
+        policy.setPremiumAmount(premiumAmount);
+        policy.setValidityPeriod(validityPeriod);
         Policy createdPolicy = policyService.savePolicy(policy);
         return ResponseEntity.ok(createdPolicy);
     }

@@ -68,6 +68,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
@@ -101,29 +102,37 @@
     </div>
  
     <!-- Add Policy Modal -->
-    <div class="modal fade" id="addPolicyModal" tabindex="-1" aria-labelledby="addPolicyModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addPolicyModalLabel">Add Policy</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form th:action="@{/admin/policies/add}" method="post">
-                        <div class="mb-3">
-                            <label for="policyName" class="form-label">Policy Name</label>
-                            <input type="text" class="form-control" id="policyName" name="policyName" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="policyDetails" class="form-label">Policy Details</label>
-                            <textarea class="form-control" id="policyDetails" name="policyDetails" rows="3" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Add Policy</button>
-                    </form>
-                </div>
+   <div class="modal fade" id="addPolicyModal" tabindex="-1" aria-labelledby="addPolicyModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addPolicyModalLabel">Add Policy</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/admin/policies/add}" method="post">
+                    <div class="mb-3">
+                        <label for="policyName" class="form-label">Policy Name</label>
+                        <input type="text" class="form-control" id="policyName" name="policyName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="policyDetails" class="form-label">Policy Details</label>
+                        <textarea class="form-control" id="policyDetails" name="policyDetails" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="premiumAmount" class="form-label">Premium Amount</label>
+                        <input type="number" class="form-control" id="premiumAmount" name="premiumAmount" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="validityPeriod" class="form-label">Validity Period</label>
+                        <input type="date" class="form-control" id="validityPeriod" name="validityPeriod" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Policy</button>
+                </form>
             </div>
         </div>
     </div>
+</div>
  
     <!-- Remove Policy Modal -->
     <div class="modal fade" id="removePolicyModal" tabindex="-1" aria-labelledby="removePolicyModalLabel" aria-hidden="true">
@@ -162,7 +171,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="policyIdAssign" class="form-label">Policy ID</label>
-                            <input type="text" class="form-control" id="policyIdAssign" name="policyIdAssign" required>
+                            <input type="text" class="form-control" id="policyIdAssign" name="policyId" required>
                         </div>
                         <button type="submit" class="btn btn-success">Assign Policy</button>
                     </form>
