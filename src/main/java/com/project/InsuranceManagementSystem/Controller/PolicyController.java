@@ -17,11 +17,13 @@ public class PolicyController {
         this.policyService = policyService;
     }
 
+    // Get all policies
     @GetMapping
     public List<Policy> getAllPolicies() {
         return policyService.getAllPolicies();
     }
 
+    // Get a policy by ID
     @GetMapping("/{id}")
     public ResponseEntity<Policy> getPolicyById(@PathVariable Long id) {
         Policy policy = policyService.getPolicyById(id);
@@ -32,11 +34,42 @@ public class PolicyController {
         }
     }
 
-    @PostMapping
-    public Policy createPolicy(@RequestBody Policy policy) {
-        return policyService.savePolicy(policy);
+    // Add a new policy
+    @PostMapping("/add")
+    public ResponseEntity<Policy> createPolicy(@RequestBody Policy policy) {
+        Policy createdPolicy = policyService.savePolicy(policy);
+        return ResponseEntity.ok(createdPolicy);
     }
 
+    // Remove a policy
+    @PostMapping("/remove")
+    public ResponseEntity<Void> removePolicy(@RequestParam Long policyId) {
+        policyService.deletePolicy(policyId);
+        return ResponseEntity.noContent().build();
+    }
+
+    // Assign a policy to an agent
+    @PostMapping("/assign")
+    public ResponseEntity<String> assignPolicyToAgent(@RequestParam Long policyId, @RequestParam Long agentId) {
+        // Add logic to assign the policy to the agent
+        return ResponseEntity.ok("Policy assigned successfully");
+    }
+
+    // Approve or reject a policy
+    @PostMapping("/approve-reject")
+    public ResponseEntity<String> approveOrRejectPolicy(@RequestParam Long policyId, @RequestParam String action) {
+        if ("approve".equalsIgnoreCase(action)) {
+            // Add logic to approve the policy
+            return ResponseEntity.ok("Policy approved successfully");
+        } else if ("reject".equalsIgnoreCase(action)) {
+            // Add logic to reject the policy
+            return ResponseEntity.ok("Policy rejected successfully");
+        } else {
+            return ResponseEntity.badRequest().body("Invalid action");
+        }
+    }
+
+    // Update a policy
     @PutMapping("/{id}")
     public ResponseEntity<Policy> updatePolicy(@PathVariable Long id, @RequestBody Policy updatedPolicy) {
         Policy existingPolicy = policyService.getPolicyById(id);
@@ -51,13 +84,10 @@ public class PolicyController {
         }
     }
 
+    // Delete a policy
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePolicy(@PathVariable Long id) {
-        if (policyService.getPolicyById(id) != null) {
-            policyService.deletePolicy(id);
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        policyService.deletePolicy(id);
+        return ResponseEntity.noContent().build();
     }
 }

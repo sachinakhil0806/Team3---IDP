@@ -3,6 +3,7 @@ package com.project.InsuranceManagementSystem.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "Policy")
 public class Policy {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "policy_seq_gen")
